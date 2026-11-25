@@ -1,0 +1,6 @@
+{
+  "name": "Operation Ossuary",
+  "description": "First-person 3D military helicopter tactical strike around a colossal desert monolith under golden-hour shadows and lighting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

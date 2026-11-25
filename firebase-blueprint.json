@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "MonolithNote": {
+      "title": "MonolithNote",
+      "description": "A user-authored 3D annotation pinned to a specific landmark or coordinate on the desert monolith.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Firebase Auth UID of the user who owns this monolith note."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Short label or heading for the pinned monolith part."
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "Detailed note text attached to the monolith coordinate."
+        },
+        "partName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Detected or user-specified structural part name on the monolith."
+        },
+        "color": {
+          "type": "string",
+          "enum": ["amber", "emerald", "crimson", "ivory"],
+          "maxLength": 16,
+          "description": "Visual beacon color for the 3D pin marker."
+        },
+        "posX": {
+          "type": "number",
+          "description": "3D world X coordinate of the pinned point on the monolith."
+        },
+        "posY": {
+          "type": "number",
+          "description": "3D world Y coordinate of the pinned point on the monolith."
+        },
+        "posZ": {
+          "type": "number",
+          "description": "3D world Z coordinate of the pinned point on the monolith."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the note was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the note was last modified."
+        }
+      },
+      "required": [
+        "ownerId",
+        "title",
+        "body",
+        "partName",
+        "color",
+        "posX",
+        "posY",
+        "posZ",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/monolith_notes/{noteId}": {
+      "schema": {
+        "$ref": "#/entities/MonolithNote"
+      },
+      "description": "User-owned 3D notes pinned to specific parts of the desert monolith."
+    }
+  }
+}
